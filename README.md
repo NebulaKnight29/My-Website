@@ -4,10 +4,6 @@ My Website
 
 A personal portfolio website showcasing my interests, projects, activities, and experiences in **robotics, STEM, programming, mathematics, and music**.
 
-## 🌐 Live Website
-
-[View the website](https://nebulaknight29.github.io/)
-
 ## ✨ Features
 
 * About Me section
