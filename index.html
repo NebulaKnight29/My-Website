@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Bhalotia | STEM & Robotics</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0f;
+            color: #f5f5f7;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #7c7cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #aaa;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 25px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #5d5df0;
+            opacity: 0.12;
+            filter: blur(150px);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            animation: fadeUp 1s ease;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            color: #aaa;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 9vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+            letter-spacing: -4px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #ffffff, #8585ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: auto;
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 12px 22px;
+            border-radius: 8px;
+            background: #fff;
+            color: #111;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        /* GENERAL */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .section-label {
+            color: #7777ff;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #999;
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: #111118;
+            border: 1px solid #22222c;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #4444aa;
+        }
+
+        .card p {
+            color: #aaa;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .interest {
+            background: #191923;
+            border: 1px solid #292936;
+            padding: 7px 12px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .projects{
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #999;
+        }
+
+        .project-footer {
+            margin-top: 25px;
+            color: #7777ff;
+            font-size: 13px;
+        }
+
+        /* ACTIVITIES */
+        .timeline {
+            border-left: 1px solid #333;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #7777ff;
+            left: -35px;
+            top: 8px;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            color: #999;
+        }
+
+        /* STATS */
+        
+        .stats{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 25px 10px;
+            background: #111118;
+            border: 1px solid #22222c;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #111118,
+                #151525
+            );
+            border: 1px solid #252535;
+            border-radius: 20px;
+            padding: 70px 30px;
+        }
+
+        .contact p {
+            color: #999;
+            max-width: 550px;
+            margin: 0 auto 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #181820;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 75px 20px;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">HB<span>.</span></div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#music">Music</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+
+        <div class="tag">STEM • ROBOTICS • MUSIC</div>
+
+        <h1>
+            Hi, I'm <span class="gradient">Harsh.</span>
+        </h1>
+
+        <p>
+            A student interested in robotics, software, engineering,
+            mathematics, and music. I like building things, solving problems,
+            and learning how things work.
+        </p>
+
+        <div class="buttons">
+            <a class="button" href="#projects">View My Projects</a>
+            <a class="button secondary" href="#about">About Me</a>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="section-label">01 — About</div>
+
+    <h2>A little about me.</h2>
+
+    <p class="section-description">
+        I'm a student who enjoys combining creativity with technical problem
+        solving. Most of my time goes toward STEM, robotics, programming,
+        mathematics, and music.
+    </p>
+    
+    <div class="about-grid">
+
+        <div class="card">
+            <h3>What I Do</h3>
+            <br>
+
+            <p>
+                I work on robotics and programming projects, experiment with
+                CAD and engineering, and enjoy finding ways to turn ideas
+                into things that actually work. Unfortunately, I don't have a lot of 
+                free time, but when I do, I like to play violin, play sports, and create content.
+            </p>
+
+            <div class="interests">
+                <span class="interest">Robotics</span>
+                <span class="interest">Java</span>
+                <span class="interest">CAD</span>
+                <span class="interest">Mathematics</span>
+                <span class="interest">Engineering</span>
+                <span class="interest">STEM</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Outside of Coding</h3>
+            <br>
+
+            <p>
+                When I'm not working on a technical project, I enjoy playing
+                violin, playing sports, creating content, and working with
+                younger students on STEM activities. I am also part of a non-profit
+                 organization that helps students learn about STEM. We create activities 
+                 and lessons that make engineering, science, and mathematics accessible 
+                 to younger students.
+            </p>
+
+            <div class="interests">
+                <span class="interest">🎻 Violin</span>
+                <span class="interest">⚽ Soccer</span>
+                <span class="interest">🏃 Track</span>
+                <span class="interest">🎮 Gaming</span>
+                <span class="interest">📚 Learning</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Years of Violin</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">FTC</div>
+            <div class="stat-label">Robotics</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">STEM</div>
+            <div class="stat-label">Education</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Things to Build</div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+    <div class="section-label">02 — Projects</div>
+
+    <h2>Things I've built.</h2>
+
+    <p class="section-description">
+        A collection of projects I've worked on across robotics, programming,
+        engineering, and STEM education.
+    </p>
+
+    <div class="projects">
+
+        <div class="card project">
+            <div>
+                <div class="project-icon">🤖</div>
+                <h3>FTC Robotics</h3>
+                <p>
+                    Programming and engineering robots for FIRST Tech Challenge,
+                    including autonomous routines, controls, and mechanisms.
+                </p>
+            </div>
+
+            <div class="project-footer">
+                Java • Robotics • Engineering
+            </div>
+        </div>
+
+
+        <div class="card project">
+            <div>
+                <div class="project-icon">📐</div>
+                <h3>CAD Projects</h3>
+                <p>
+                    Designing mechanical parts and mechanisms using CAD,
+                    turning concepts into manufacturable designs.
+                </p>
+            </div>
+
+            <div class="project-footer">
+                CAD • Design • Manufacturing
+            </div>
+        </div>
+
+
+        <div class="card project">
+            <div>
+                <div class="project-icon">🧠</div>
+                <h3>STEM Education</h3>
+                <p>
+                    Creating STEM activities and lessons that make engineering,
+                    science, and mathematics accessible to younger students.
+                </p>
+            </div>
+
+            <div class="project-footer">
+                Education • STEM • Leadership
+            </div>
+        </div>
+
+
+        <div class="card project">
+            <div>
+                <div class="project-icon">💻</div>
+                <h3>Programming</h3>
+                <p>
+                    Building software and experimenting with different
+                    programming ideas, tools, and technologies.
+                </p>
+            </div>
+
+            <div class="project-footer">
+                Java • Web • Problem Solving
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ACTIVITIES -->
+<section id="activities">
+
+    <div class="section-label">03 — Activities</div>
+
+    <h2>What I'm involved in.</h2>
+
+    <p class="section-description">
+        Experiences that have helped me develop technical skills,
+        leadership, creativity, and teamwork.
+    </p>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Robotics</h3>
+            <p>
+                Working on FTC robotics projects involving programming,
+                mechanical design, CAD, and problem solving.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>STEM Education</h3>
+            <p>
+                Helping create and teach STEM programs for younger students,
+                including hands-on engineering activities.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>TSA</h3>
+            <p>
+                Exploring engineering, technology, and design through
+                Technology Student Association projects and competitions.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Mathematics</h3>
+            <p>
+                Studying advanced mathematics and participating in
+                mathematics-related competitions and activities.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIC -->
+<section id="music">
+
+    <div class="section-label">04 — Music</div>
+
+    <h2>Another side of me.</h2>
+
+    <p class="section-description">
+        Engineering isn't my only interest. I've also spent years developing
+        my skills as a violinist and performing music.
+    </p>
+
+    <div class="card">
+
+        <h3>🎻 Violin</h3>
+
+        <br>
+
+        <p>
+            I've been playing violin for over eight years. Music has taught me
+            patience, attention to detail, and the importance of consistent
+            practice — skills that also carry over into engineering and
+            programming.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section>
+
+    <div class="contact">
+
+        <div class="section-label">05 — Contact</div>
+
+        <h2>Let's build something.</h2>
+
+        <p>
+            Interested in robotics, STEM, programming, or just want to talk
+            about a project? Feel free to reach out.
+        </p>
+
+        <!-- Replace this with your actual email -->
+        <a class="button" href="mailto:YOUR_EMAIL@example.com">
+            Get in Touch
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Harsh Bhalotia · Built with HTML & CSS
+</footer>
+
+</body>
+</html>
