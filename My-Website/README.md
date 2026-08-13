@@ -25,9 +25,15 @@ Providing suggestions for design and layout
 I reviewed, edited, and customized the website myself.
 
 📁 Project Structure
-personal-site/
-└── index.html
-The entire website is contained in a single HTML file, including the CSS.
+.
+├── index.html
+├── README.md
+└── My-Website/
+    ├── index.html
+    └── README.md
+
+The canonical deployment entry point is the root index.html. The nested My-Website/index.html mirrors the same implementation for local organization and reference, so there is no separate personal-site/index.html project to maintain.
+The entire website is contained in a single HTML file with embedded CSS.
 
 📌 Purpose
 This website was created as a personal portfolio and as part of the Stardance Personal Site mission.
